@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="in.doris.sharq.activities">
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <application
+        android:allowBackup="true"
+        android:debuggable="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="HardcodedDebugMode">
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".displayMenuActivity"
+            android:parentActivityName=".LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="in.doris.sharq.activities.LoginActivity" />
+        </activity>
+        <activity
+            android:name=".GoalsActivity"
+            android:label="@string/title_activity_goals"
+            android:parentActivityName=".registerActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="in.doris.sharq.activities.registerActivity" />
+        </activity>
+        <!--
+ ATTENTION: This was auto-generated to add Google Play services to your project for
+     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
+        -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name=".BluePrintActivity"
+            android:label="@string/title_activity_blue_print"
+            android:parentActivityName=".registerActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="in.doris.sharq.activities.registerActivity" />
+        </activity>
+        <activity
+            android:name=".registerActivity"
+            android:label="@string/new_user"
+            android:parentActivityName=".LoginActivity"
+            android:theme="@style/Theme.AppCompat">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="in.doris.sharq.activities.LoginActivity" />
+        </activity>
+        <activity
+            android:name=".NameListActivity"
+            android:label="@string/title_activity_name_list"
+            android:parentActivityName=".displayMenuActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="in.doris.sharq.activities.displayMenuActivity" />
+        </activity>
+        <activity
+            android:name=".FollowupActivity"
+            android:label="@string/title_activity_followup"
+            android:parentActivityName=".displayMenuActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="in.doris.sharq.activities.displayMenuActivity" />
+        </activity>
+        <activity
+            android:name=".ManipulateNamelistActivity"
+            android:label="@string/title_activity_manipulate_namelist"
+            android:parentActivityName=".NameListActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="in.doris.sharq.activities.NameListActivity" />
+        </activity>
+    </application>
+
+</manifest>

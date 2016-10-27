@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/my_profile"
+        android:orderInCategory="100"
+        android:title="My Profile"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/export"
+        android:orderInCategory="100"
+        android:title="Export"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/Import"
+        android:orderInCategory="100"
+        android:title="Import"
+        app:showAsAction="never" />
+    <!--<item-->
+        <!--android:id="@+id/view_screen_chart"-->
+        <!--android:orderInCategory="100"-->
+        <!--android:title="@string/view_screen_chart"-->
+        <!--app:showAsAction="never" />-->
+    <!--<item-->
+        <!--android:id="@+id/miscellaneous"-->
+        <!--android:orderInCategory="100"-->
+        <!--android:title="@string/miscellaneous"-->
+        <!--app:showAsAction="never" />-->
+    <!--<item-->
+        <!--android:id="@+id/settings"-->
+        <!--android:orderInCategory="100"-->
+        <!--android:title="@string/settings"-->
+        <!--app:showAsAction="never" />-->
+</menu>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:showIn="@layout/activity_followup_list">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!--android:paddingBottom="@dimen/activity_vertical_margin"-->
+    <!--android:paddingLeft="@dimen/activity_horizontal_margin"-->
+    <!--android:paddingRight="@dimen/activity_horizontal_margin"-->
+    <!--android:paddingTop="@dimen/activity_vertical_margin"-->
+    <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
+    <!--tools:context="in.doris.sharq.activities.NameListActivity"-->
+
+        <EditText
+            android:id="@+id/name"
+            android:hint="Enter your name."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight= "0"
+            android:layout_marginTop="0dp"
+            android:layout_alignParentTop="true"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            />
+        <EditText
+            android:layout_below="@id/name"
+            android:layout_margin="10dp"
+            android:id="@+id/phone"
+            android:hint="Enter mobile no."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:layout_weight= "0"/>
+        <EditText
+            android:layout_below="@id/phone"
+            android:layout_margin="10dp"
+            android:id="@+id/place"
+            android:hint="Enter Location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textImeMultiLine"
+            android:layout_weight= "0.5"/>
+        <EditText
+            android:layout_below="@id/place"
+            android:id="@+id/rname"
+            android:hint="Who reffered you"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight= "0"
+            android:layout_marginTop="0dp"
+            android:layout_alignParentTop="true"/>
+
+        <EditText
+            android:layout_below="@id/rname"
+            android:layout_margin="10dp"
+            android:id="@+id/dppt"
+            android:hint="Date of presentation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="date"
+            android:layout_weight= "0"/>
+        <EditText
+            android:layout_below="@id/dppt"
+            android:layout_margin="10dp"
+            android:id="@+id/icon"
+            android:hint="Last conversation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight= "0.5"
+            android:inputType="text"/>
+
+        <EditText
+            android:layout_below="@id/icon"
+            android:layout_margin="10dp"
+            android:id="@+id/remark"
+            android:hint="Write your comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight= "0.5"
+            android:inputType="textImeMultiLine"/>
+        <EditText
+            android:layout_below="@id/remark"
+            android:layout_margin="10dp"
+            android:id="@+id/csts"
+            android:hint="Current status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight= "0.5"
+            android:inputType="text"/>
+        <EditText
+            android:layout_below="@id/csts"
+            android:layout_margin="10dp"
+            android:id="@+id/sdate"
+            android:hint="Current status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight= "0"
+            android:inputType="date"/>
+        <EditText
+            android:layout_below="@id/sdate"
+            android:layout_margin="10dp"
+            android:id="@+id/bv"
+            android:hint="No. of BV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight= "0"
+            android:inputType="numberDecimal"/>
+        <EditText
+            android:layout_below="@id/bv"
+            android:layout_margin="10dp"
+            android:id="@+id/lr"
+            android:hint="Left or Right"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight= "0"
+            android:inputType="text"/>
+        <EditText
+            android:layout_below="@id/lr"
+            android:layout_margin="10dp"
+            android:id="@+id/direct"
+            android:hint="direct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight= "0"
+            android:inputType="text"/>
+
+        <EditText
+            android:layout_below="@id/direct"
+            android:id="@+id/nof"
+            android:hint="Number of follwups"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight= "0"
+            android:inputType="number"/>
+
+        <Button
+            android:id="@+id/ok"
+            android:text="Ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight= "0"
+            android:layout_gravity="bottom"
+            android:clickable="true"
+            android:onClick="onButtonClick"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp" />
+
+</RelativeLayout>
+</ScrollView>

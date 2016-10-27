@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/tablelayout"
+        android:clickable="true" >
+        <TableRow android:id="@+id/row1"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+            <TextView android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/sno"
+                android:padding="5dp"/>
+             <TextView android:layout_height="wrap_content"
+              android:layout_width="wrap_content"
+              android:text="@string/name"
+                 android:padding="5dp"/>
+             <TextView android:layout_height="wrap_content"
+             android:layout_width="wrap_content"
+               android:text="@string/st"
+                 android:padding="5dp"/>
+            <TextView android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/location"  android:padding="5dp"/>
+            <TextView android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/cat"  android:padding="5dp"/>
+            <TextView android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/contact"  android:padding="5dp"/>
+
+            </TableRow>
+        <TableRow android:id="@+id/row2"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent" android:clickable="true" >
+            <TextView  android:id="@+id/sno"   android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:padding="5dp"/>
+            <TextView  android:id="@+id/name" android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:padding="5dp"/>
+            <TextView android:id="@+id/star" android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:padding="5dp"/>
+            <TextView  android:id="@+id/loc" android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                 android:padding="5dp"/>
+            <TextView android:id="@+id/cat" android:layout_height="wrap_content"
+                android:layout_width="wrap_content"/>
+            <TextView   android:id="@+id/phone" android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:padding="5dp"
+                android:clickable="true" />
+
+        </TableRow>
+    </TableLayout>>
+</LinearLayout>

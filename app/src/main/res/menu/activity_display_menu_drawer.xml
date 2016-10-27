@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <!--<item-->
+            <!--android:id="@+id/nav_camera"-->
+            <!--android:icon="@drawable/ic_menu_camera"-->
+            <!--android:title="Import" />-->
+        <!--<item-->
+            <!--android:id="@+id/nav_gallery"-->
+            <!--android:icon="@drawable/ic_menu_gallery"-->
+            <!--android:title="Gallery" />-->
+        <!--<item-->
+            <!--android:id="@+id/nav_slideshow"-->
+            <!--android:icon="@drawable/ic_menu_slideshow"-->
+            <!--android:title="Slideshow" />-->
+        <!--<item-->
+            <!--android:id="@+id/nav_manage"-->
+            <!--android:icon="@drawable/ic_menu_manage"-->
+            <!--android:title="Tools" />-->
+        <item
+            android:id="@+id/name_list"
+            android:orderInCategory="100"
+            android:title="@string/name_list"
+            />
+           // app:showAsAction="never"/>
+        <item
+            android:id="@+id/follow_up_list"
+            android:orderInCategory="100"
+            android:title="@string/follow_up_list"
+            />
+            //app:showAsAction="never"/>
+        <item
+            android:id="@+id/view_screen_chart"
+            android:orderInCategory="100"
+            android:title="@string/view_success_chart"/>
+            //app:showAsAction="never"/>
+        <item
+            android:id="@+id/miscellaneous"
+            android:orderInCategory="100"
+            android:title="@string/miscellaneous" />
+            //app:showAsAction="never"/>
+        <!--<item-->
+            <!--android:id="@+id/settings"-->
+            <!--android:orderInCategory="100"-->
+            <!--android:title="@string/settings"/>-->
+            <!--//app:showAsAction="never" />-->
+    </group>
+
+    <!--<item android:title="Communicate">-->
+        <!--<menu>-->
+            <!--<item-->
+                <!--android:id="@+id/nav_share"-->
+                <!--android:icon="@drawable/ic_menu_share"-->
+                <!--android:title="Share" />-->
+            <!--<item-->
+                <!--android:id="@+id/nav_send"-->
+                <!--android:icon="@drawable/ic_menu_send"-->
+                <!--android:title="Send" />-->
+        <!--</menu>-->
+    <!--</item>-->
+
+</menu>

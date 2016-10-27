@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="filter">Filter</string>
+    <string name="add">Add New Record</string>
+    <string name="by_star">By Star</string>
+    <string name="by_location">By Location</string>
+    <string name="by_color">By Color</string>
+    <string name="by_category">By Category</string>
+    <string name="show_all">Show All</string>
+    <string name="follow">Copy to Follow Up List</string>
+    <string name="sno">S.No.</string>
+    <string name="location">Location</string>
+    <string name="cat">Cat</string>
+    <string name="contact">Contact</string>
+</resources>
