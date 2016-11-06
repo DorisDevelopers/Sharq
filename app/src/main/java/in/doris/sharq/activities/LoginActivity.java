@@ -1,8 +1,10 @@
 package in.doris.sharq.activities;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -46,8 +48,8 @@ public class LoginActivity extends AppCompatActivity implements
 
         // Button listeners
         findViewById(R.id.sign_in_button).setOnClickListener(this);
-        findViewById(R.id.sign_out_button).setOnClickListener(this);
-        findViewById(R.id.disconnect_button).setOnClickListener(this);
+        /*findViewById(R.id.sign_out_button).setOnClickListener(this);
+        findViewById(R.id.disconnect_button).setOnClickListener(this);*/
 
         // [START configure_signin]
         // Configure sign-in to request the user's ID, email address, and basic
@@ -77,7 +79,7 @@ public class LoginActivity extends AppCompatActivity implements
         // difference.
         SignInButton signInButton = (SignInButton) findViewById(R.id.sign_in_button);
         signInButton.setSize(SignInButton.SIZE_STANDARD);
-        signInButton.setScopes(gso.getScopeArray());
+        //signInButton.setScopes(gso.getScopeArray());
         // [END customize_button]
     }
 
@@ -128,21 +130,26 @@ public class LoginActivity extends AppCompatActivity implements
             // Signed in successfully, show authenticated UI.
             GoogleSignInAccount acct = result.getSignInAccount();
             mStatusTextView.setText(getString(R.string.signed_in_fmt, acct.getDisplayName()));
+            //Actions to perform on database after successful login.
+
+
             //updateUI(true);
 
-            //if (pieces[0].equals(mEmail)&& pieces[1].equals(mPassword)) {
-                // Account exists, return true if the password matches.
-//                    return pieces[1].equals(mPassword);
-             //   Intent intent=new Intent(LoginActivity.this, displayMenuActivity.class);
-             //   startActivity(intent);
-            //}
-            //else{
+
                 Intent intent1=new Intent(LoginActivity.this, registerActivity.class);
                 startActivity(intent1);
-            //}
         } else {
             // Signed out, show unauthenticated UI.
-            updateUI(false);
+            /*new AlertDialog.Builder(LoginActivity.this)
+                    .setTitle("Not Signed in")
+                    .setMessage("Kindly Sign in to proceed.")
+                    .setCancelable(false)
+                    .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // Whatever...
+                        }
+                    }).create().show();*/
         }
     }
     // [END handleSignInResult]
@@ -154,22 +161,8 @@ public class LoginActivity extends AppCompatActivity implements
     }
     // [END signIn]
 
-    // [START signOut]
-    private void signOut() {
-        Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
-                new ResultCallback<Status>() {
-                    @Override
-                    public void onResult(Status status) {
-                        // [START_EXCLUDE]
-                        updateUI(false);
-                        // [END_EXCLUDE]
-                    }
-                });
-    }
-    // [END signOut]
-
     // [START revokeAccess]
-    private void revokeAccess() {
+    /*private void revokeAccess() {
         Auth.GoogleSignInApi.revokeAccess(mGoogleApiClient).setResultCallback(
                 new ResultCallback<Status>() {
                     @Override
@@ -179,7 +172,7 @@ public class LoginActivity extends AppCompatActivity implements
                         // [END_EXCLUDE]
                     }
                 });
-    }
+    }*/
     // [END revokeAccess]
 
     @Override
@@ -205,7 +198,7 @@ public class LoginActivity extends AppCompatActivity implements
         }
     }
 
-    private void updateUI(boolean signedIn) {
+    /*private void updateUI(boolean signedIn) {
         if (signedIn) {
             findViewById(R.id.sign_in_button).setVisibility(View.GONE);
             findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
@@ -215,11 +208,14 @@ public class LoginActivity extends AppCompatActivity implements
             findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
             findViewById(R.id.sign_out_and_disconnect).setVisibility(View.GONE);
         }
-    }
+    }*/
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
+        if(R.id.sign_in_button==v.getId()){
+            signIn();
+        }
+        /*switch (v.getId()) {
             case R.id.sign_in_button:
                 signIn();
                 break;
@@ -229,6 +225,6 @@ public class LoginActivity extends AppCompatActivity implements
             case R.id.disconnect_button:
                 revokeAccess();
                 break;
-        }
+        }*/
     }
 }

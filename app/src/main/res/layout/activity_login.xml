@@ -80,7 +80,7 @@
             android:visibility="visible"
             tools:visibility="gone" />
 
-        <LinearLayout
+        <!--<LinearLayout
             android:id="@+id/sign_out_and_disconnect"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -106,7 +106,7 @@
                 android:layout_weight="1"
                 android:text="@string/disconnect"
                 android:theme="@style/ThemeOverlay.MyDarkButton" />
-        </LinearLayout>
+        </LinearLayout>-->
 
     </RelativeLayout>
 
