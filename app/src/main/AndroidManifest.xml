@@ -26,7 +26,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".displayMenuActivity"
+            android:name=".DisplayMenuActivity"
             android:parentActivityName=".LoginActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -36,11 +36,11 @@
         <activity
             android:name=".GoalsActivity"
             android:label="@string/title_activity_goals"
-            android:parentActivityName=".registerActivity"
+            android:parentActivityName=".RegisterActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="in.doris.sharq.activities.registerActivity" />
+                android:value="in.doris.sharq.activities.RegisterActivity" />
         </activity>
         <!--
  ATTENTION: This was auto-generated to add Google Play services to your project for
@@ -53,14 +53,14 @@
         <activity
             android:name=".BluePrintActivity"
             android:label="@string/title_activity_blue_print"
-            android:parentActivityName=".registerActivity"
+            android:parentActivityName=".RegisterActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="in.doris.sharq.activities.registerActivity" />
+                android:value="in.doris.sharq.activities.RegisterActivity" />
         </activity>
         <activity
-            android:name=".registerActivity"
+            android:name=".RegisterActivity"
             android:label="@string/new_user"
             android:parentActivityName=".LoginActivity"
             android:theme="@style/Theme.AppCompat">
@@ -71,19 +71,19 @@
         <activity
             android:name=".NameListActivity"
             android:label="@string/title_activity_name_list"
-            android:parentActivityName=".displayMenuActivity"
+            android:parentActivityName=".DisplayMenuActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="in.doris.sharq.activities.displayMenuActivity" />
+                android:value="in.doris.sharq.activities.DisplayMenuActivity" />
         </activity>
         <activity
             android:name=".FollowupActivity"
             android:label="@string/title_activity_followup"
-            android:parentActivityName=".displayMenuActivity">
+            android:parentActivityName=".DisplayMenuActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="in.doris.sharq.activities.displayMenuActivity" />
+                android:value="in.doris.sharq.activities.DisplayMenuActivity" />
         </activity>
         <activity
             android:name=".ManipulateNamelistActivity"

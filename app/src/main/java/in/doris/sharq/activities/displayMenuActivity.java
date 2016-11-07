@@ -11,23 +11,34 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
 
 import in.doris.sharq.activities.R;
+import in.doris.sharq.util.GoogleAuthHelper;
 
-public class displayMenuActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class DisplayMenuActivity extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener,
+        GoogleApiClient.OnConnectionFailedListener
+        {
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     private GoogleApiClient client;
+    private GoogleAuthHelper googleAuthHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +77,25 @@ public class displayMenuActivity extends AppCompatActivity
         AlertDialog dialog = builder.create();
         dialog.show();
 
+        /*// [START configure_signout]
+        // Configure sign-in to request the user's ID, email address, and basic
+        // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                *//*.requestScopes(new Scope(Scopes.DRIVE_APPFOLDER))*//*
+                .requestEmail()
+                .build();
+        // [END configure_signout]
+
+        // [START build_client]
+        // Build a GoogleApiClient with access to the Google Sign-In API and the
+        // options specified by gso.
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .enableAutoManage(this *//* FragmentActivity *//*,  this*//*OnConnectionFailedListener*//*)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .build();
+        // [END build_client]*/
+        googleAuthHelper = GoogleAuthHelper.getInstance();
+
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
@@ -94,6 +124,21 @@ public class displayMenuActivity extends AppCompatActivity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+        switch (id) {
+            case R.id.my_profile:
+                //revokeAccess();
+                break;
+            case R.id.export:
+                //revokeAccess();
+                break;
+            case R.id.Import:
+                //revokeAccess();
+                break;
+            case R.id.signout:
+                signOut();
+                break;
+
+        }
 
         //noinspection SimplifiableIfStatement
 //        if (id == R.id.action_settings) {
@@ -138,6 +183,7 @@ public class displayMenuActivity extends AppCompatActivity
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client.connect();
+        googleAuthHelper.mGoogleApiClient.connect();
         Action viewAction = Action.newAction(
                 Action.TYPE_VIEW, // TODO: choose an action type.
                 "displayMenu Page", // TODO: Define a title for the content shown.
@@ -170,4 +216,22 @@ public class displayMenuActivity extends AppCompatActivity
         AppIndex.AppIndexApi.end(client, viewAction);
         client.disconnect();
     }
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+        // An unresolvable error has occurred and Google APIs (including Sign-In) will not
+        // be available.
+        Log.d(GoogleAuthHelper.TAG, "onConnectionFailed:" + connectionResult);
+    }
+
+    // [START signOut]
+    private void signOut() {
+        boolean signedOut = false;
+        signedOut = googleAuthHelper.signOut(this);
+
+        if(signedOut){
+            Intent nextActivityIntent = new Intent(this, LoginActivity.class);
+            startActivity(nextActivityIntent);
+        }
+    }
+    // [END signOut]
 }

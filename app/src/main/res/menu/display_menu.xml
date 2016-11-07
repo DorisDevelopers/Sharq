@@ -16,6 +16,11 @@
         android:orderInCategory="100"
         android:title="Import"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/signout"
+        android:orderInCategory="100"
+        android:title="Signout"
+        app:showAsAction="never" />
     <!--<item-->
         <!--android:id="@+id/view_screen_chart"-->
         <!--android:orderInCategory="100"-->
