@@ -26,8 +26,9 @@ import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 
 import in.doris.sharq.activities.R;
+import in.doris.sharq.util.GoogleAuthHelper;
 
-public class displayMenuActivity extends AppCompatActivity
+public class DisplayMenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
         GoogleApiClient.OnConnectionFailedListener
         {
@@ -37,8 +38,7 @@ public class displayMenuActivity extends AppCompatActivity
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     private GoogleApiClient client;
-    private static GoogleApiClient mGoogleApiClient;
-    private static final String TAG = "SignInActivity";
+    private GoogleAuthHelper googleAuthHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,11 +77,11 @@ public class displayMenuActivity extends AppCompatActivity
         AlertDialog dialog = builder.create();
         dialog.show();
 
-        // [START configure_signout]
+        /*// [START configure_signout]
         // Configure sign-in to request the user's ID, email address, and basic
         // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                /*.requestScopes(new Scope(Scopes.DRIVE_APPFOLDER))*/
+                *//*.requestScopes(new Scope(Scopes.DRIVE_APPFOLDER))*//*
                 .requestEmail()
                 .build();
         // [END configure_signout]
@@ -90,10 +90,11 @@ public class displayMenuActivity extends AppCompatActivity
         // Build a GoogleApiClient with access to the Google Sign-In API and the
         // options specified by gso.
         mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .enableAutoManage(this /* FragmentActivity */,  this/*OnConnectionFailedListener*/)
+                .enableAutoManage(this *//* FragmentActivity *//*,  this*//*OnConnectionFailedListener*//*)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
-        // [END build_client]
+        // [END build_client]*/
+        googleAuthHelper = GoogleAuthHelper.getInstance();
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -182,6 +183,7 @@ public class displayMenuActivity extends AppCompatActivity
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client.connect();
+        googleAuthHelper.mGoogleApiClient.connect();
         Action viewAction = Action.newAction(
                 Action.TYPE_VIEW, // TODO: choose an action type.
                 "displayMenu Page", // TODO: Define a title for the content shown.
@@ -218,23 +220,18 @@ public class displayMenuActivity extends AppCompatActivity
     public void onConnectionFailed(ConnectionResult connectionResult) {
         // An unresolvable error has occurred and Google APIs (including Sign-In) will not
         // be available.
-        Log.d(TAG, "onConnectionFailed:" + connectionResult);
+        Log.d(GoogleAuthHelper.TAG, "onConnectionFailed:" + connectionResult);
     }
 
-            // [START signOut]
-            private void signOut() {
-                Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
-                        new ResultCallback<Status>() {
-                            @Override
-                            public void onResult(Status status) {
-                                // [START_EXCLUDE]
+    // [START signOut]
+    private void signOut() {
+        boolean signedOut = false;
+        signedOut = googleAuthHelper.signOut(this);
 
-                                //updateUI(false);
-                                // [END_EXCLUDE]
-                            }
-                        });
-                Intent nextActivityIntent = new Intent(this, LoginActivity.class);
-                startActivity(nextActivityIntent);
-            }
-            // [END signOut]
+        if(signedOut){
+            Intent nextActivityIntent = new Intent(this, LoginActivity.class);
+            startActivity(nextActivityIntent);
+        }
+    }
+    // [END signOut]
 }
