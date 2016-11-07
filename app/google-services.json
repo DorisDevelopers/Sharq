@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "836920151908",
+    "project_id": "sharq-doris"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:836920151908:android:e2a0e5e4aee3e426",
+        "android_client_info": {
+          "package_name": "in.doris.sharq"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "836920151908-kaoti79df1k9vddeel7r2bo6378u9hu9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "in.doris.sharq",
+            "certificate_hash": "0D350C23210C72094678D39D5FEBFE6085E69CA4"
+          }
+        },
+        {
+          "client_id": "836920151908-931cise6mguld4cni10driuvjd6vuite.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPA6j08x7f2dcVo78LgQv7ZVObO0iNriY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
