@@ -17,9 +17,13 @@
     <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
     <!--tools:context="in.doris.sharq.activities.NameListActivity"-->
 
-        <EditText
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/name_box">
+    <android.support.v7.widget.AppCompatEditText
             android:id="@+id/name"
-            android:hint="Enter your name."
+            android:hint="Name."
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -28,17 +32,27 @@
             android:layout_alignParentTop="true"
             android:paddingTop="@dimen/activity_vertical_margin"
             />
-        <EditText
-            android:layout_below="@id/name"
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/name_box"
+        android:id="@+id/phone_box">
+    <android.support.v7.widget.AppCompatEditText
             android:layout_margin="10dp"
             android:id="@+id/phone"
-            android:hint="Enter mobile no."
+            android:hint="Mobile no."
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
             android:layout_weight= "0"/>
-        <EditText
-            android:layout_below="@id/phone"
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/phone_box"
+        android:id="@+id/place_box">
+    <android.support.v7.widget.AppCompatEditText
             android:layout_margin="10dp"
             android:id="@+id/place"
             android:hint="Enter Location"
@@ -46,19 +60,29 @@
             android:layout_height="wrap_content"
             android:inputType="textImeMultiLine"
             android:layout_weight= "0.5"/>
-        <EditText
-            android:layout_below="@id/place"
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/place_box"
+        android:id="@+id/rname_box">
+    <android.support.v7.widget.AppCompatEditText
             android:id="@+id/rname"
-            android:hint="Who reffered you"
+            android:hint="Reffer's Name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:layout_weight= "0"
             android:layout_marginTop="0dp"
             android:layout_alignParentTop="true"/>
+    </android.support.design.widget.TextInputLayout>
 
-        <EditText
-            android:layout_below="@id/rname"
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rname_box"
+        android:id="@+id/dppt_box">
+    <android.support.v7.widget.AppCompatEditText
             android:layout_margin="10dp"
             android:id="@+id/dppt"
             android:hint="Date of presentation"
@@ -66,27 +90,42 @@
             android:layout_height="wrap_content"
             android:inputType="date"
             android:layout_weight= "0"/>
-        <EditText
-            android:layout_below="@id/dppt"
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dppt_box"
+        android:id="@+id/lcon_box">
+    <android.support.v7.widget.AppCompatEditText
             android:layout_margin="10dp"
-            android:id="@+id/icon"
+            android:id="@+id/lcon"
             android:hint="Last conversation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight= "0.5"
             android:inputType="text"/>
+    </android.support.design.widget.TextInputLayout>
 
-        <EditText
-            android:layout_below="@id/icon"
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lcon_box"
+        android:id="@+id/remark_box">
+    <android.support.v7.widget.AppCompatEditText
             android:layout_margin="10dp"
             android:id="@+id/remark"
-            android:hint="Write your comment"
+            android:hint="Comments"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight= "0.5"
             android:inputType="textImeMultiLine"/>
-        <EditText
-            android:layout_below="@id/remark"
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/remark_box"
+        android:id="@+id/csts_box">
+    <android.support.v7.widget.AppCompatEditText
             android:layout_margin="10dp"
             android:id="@+id/csts"
             android:hint="Current status"
@@ -94,17 +133,27 @@
             android:layout_height="wrap_content"
             android:layout_weight= "0.5"
             android:inputType="text"/>
-        <EditText
-            android:layout_below="@id/csts"
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/csts_box"
+        android:id="@+id/sdate_box">
+    <android.support.v7.widget.AppCompatEditText
             android:layout_margin="10dp"
             android:id="@+id/sdate"
-            android:hint="Current status"
+            android:hint="Signup Date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight= "0"
             android:inputType="date"/>
-        <EditText
-            android:layout_below="@id/sdate"
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sdate_box"
+        android:id="@+id/bv_box">
+    <android.support.v7.widget.AppCompatEditText
             android:layout_margin="10dp"
             android:id="@+id/bv"
             android:hint="No. of BV"
@@ -112,8 +161,13 @@
             android:layout_height="wrap_content"
             android:layout_weight= "0"
             android:inputType="numberDecimal"/>
-        <EditText
-            android:layout_below="@id/bv"
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bv_box"
+        android:id="@+id/lr_box">
+    <android.support.v7.widget.AppCompatEditText
             android:layout_margin="10dp"
             android:id="@+id/lr"
             android:hint="Left or Right"
@@ -121,27 +175,39 @@
             android:layout_height="wrap_content"
             android:layout_weight= "0"
             android:inputType="text"/>
-        <EditText
-            android:layout_below="@id/lr"
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lr_box"
+        android:id="@+id/direct_box">
+    <android.support.v7.widget.AppCompatEditText
             android:layout_margin="10dp"
             android:id="@+id/direct"
-            android:hint="direct"
+            android:hint="Direct"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight= "0"
             android:inputType="text"/>
+    </android.support.design.widget.TextInputLayout>
 
-        <EditText
-            android:layout_below="@id/direct"
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/direct_box"
+        android:id="@+id/nof_box">
+    <android.support.v7.widget.AppCompatEditText
             android:id="@+id/nof"
             android:hint="Number of follwups"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight= "0"
             android:inputType="number"/>
+    </android.support.design.widget.TextInputLayout>
 
         <Button
             android:id="@+id/ok"
+            android:layout_below="@+id/nof_box"
             android:text="Ok"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

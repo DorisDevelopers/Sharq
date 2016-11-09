@@ -21,7 +21,8 @@
         <android.support.v7.widget.AppCompatEditText
             android:layout_margin="10dp"
             android:id="@+id/name"
-            android:hint="Enter your name"
+            android:hint="Name"
+            android:inputType="text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight= "1"/>
@@ -41,7 +42,7 @@
         <android.support.v7.widget.AppCompatEditText
             android:layout_margin="10dp"
             android:id="@+id/phone"
-            android:hint="Enter your mobile no."
+            android:hint="Mobile no."
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="phone"
@@ -55,7 +56,7 @@
         <android.support.v7.widget.AppCompatEditText
             android:layout_margin="10dp"
             android:id="@+id/email"
-            android:hint="Enter your email id"
+            android:hint="Email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
@@ -69,7 +70,7 @@
         <android.support.v7.widget.AppCompatEditText
             android:layout_margin="10dp"
             android:id="@+id/joining_date"
-            android:hint="Enter date"
+            android:hint="Joining date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="date"
@@ -83,7 +84,7 @@
         <android.support.v7.widget.AppCompatEditText
             android:layout_margin="10dp"
             android:id="@+id/leader_name"
-            android:hint="Enter leader name"
+            android:hint="Leader's name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"

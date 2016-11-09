@@ -31,6 +31,9 @@ public class LoginActivity extends AppCompatActivity implements
     private TextView mStatusTextView;
     private ProgressDialog mProgressDialog;
     private GoogleAuthHelper googleAuthHelper;
+    public static final String KEY_NAME="login_name";
+    public static final String KEY_EMAIL="login_email";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,20 +104,34 @@ public class LoginActivity extends AppCompatActivity implements
 
     // [START handleSignInResult]
     private void handleSignInResult(GoogleSignInResult result) {
+        Intent intent = null;
         Log.d(GoogleAuthHelper.TAG, "handleSignInResult:" + result.isSuccess());
 
         if (result.isSuccess()) {
             // Signed in successfully, show authenticated UI.
             GoogleSignInAccount acct = result.getSignInAccount();
             mStatusTextView.setText(getString(R.string.signed_in_fmt, acct.getDisplayName()));
-            //Actions to perform on database after successful login.
+
+            if(freshUser()){
+                //Actions to perform on database after first successful login starts.
+
+                //Actions to perform on database after first successful login Ends.
+                //Pass name and email from login details.
+                intent =new Intent(LoginActivity.this, RegisterActivity.class);
+                intent.putExtra(KEY_NAME, acct.getGivenName());
+                intent.putExtra(KEY_EMAIL, acct.getEmail());
+                startActivity(intent);
+
+            }else{
+                intent = new Intent(LoginActivity.this,DisplayMenuActivity.class);
+                startActivity(intent);
+            }
 
 
             //updateUI(true);
 
 
-                Intent intent1=new Intent(LoginActivity.this, RegisterActivity.class);
-                startActivity(intent1);
+
         } else {
             // Signed out, show unauthenticated UI.
             /*new AlertDialog.Builder(LoginActivity.this)
@@ -203,5 +220,8 @@ public class LoginActivity extends AppCompatActivity implements
                 revokeAccess();
                 break;
         }*/
+    }
+    private boolean freshUser(){
+        return true;
     }
 }
