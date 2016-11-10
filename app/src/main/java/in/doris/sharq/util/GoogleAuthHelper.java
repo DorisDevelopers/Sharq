@@ -50,9 +50,9 @@ public class GoogleAuthHelper {
         // options specified by gso.
         if(mGoogleApiClient == null){
             mGoogleApiClient = new GoogleApiClient.Builder(obj)
-                    .enableAutoManage(obj /* FragmentActivity */, obj /* OnConnectionFailedListener */)
                     .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                     .build();
+            mGoogleApiClient.connect();
 
         }
         // [END build_client]
@@ -65,7 +65,7 @@ public class GoogleAuthHelper {
     }
 
     // [START signOut]
-    public boolean signOut(DisplayMenuActivity obj) {
+    public boolean signOut() {
         try{
             Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
                     new ResultCallback<Status>() {
@@ -84,4 +84,5 @@ public class GoogleAuthHelper {
         }
     }
     // [END signOut]
+
 }

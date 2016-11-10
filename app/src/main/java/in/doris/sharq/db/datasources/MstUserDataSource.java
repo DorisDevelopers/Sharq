@@ -51,7 +51,9 @@ public class MstUserDataSource {
         values.put(MstUser.COLUMN_NAME, mstUserBeanObj.getName());
         values.put(MstUser.COLUMN_PHONE, mstUserBeanObj.getPhone());
         values.put(MstUser.COLUMN_EMAIL, mstUserBeanObj.getEmail());
-        values.put(MstUser.COLUMN_DATJND, mstUserBeanObj.getDatjnd().toString());
+        if(null !=  mstUserBeanObj.getDatjnd()) {
+            values.put(MstUser.COLUMN_DATJND, mstUserBeanObj.getDatjnd().toString());
+        }
         values.put(MstUser.COLUMN_LNAME, mstUserBeanObj.getLname());
         values.put(MstUser.COLUMN_RANK, mstUserBeanObj.getRank());
         values.put(MstUser.COLUMN_CHECKLIST, mstUserBeanObj.getChecklist());
@@ -68,10 +70,10 @@ public class MstUserDataSource {
     }
 
     public void deleteUser(MstUserBean mstUserBeanObj) {
-        long id = mstUserBeanObj.getId();
+        String[] id = {mstUserBeanObj.getId().toString()};
         System.out.println("User deletion initiated with id: " + id);
         database.delete(MstUser.TABLE_NAME, MstUser.COLUMN_ID
-                + " = " + id, null);
+                + " = ? ", id);
         System.out.println("User deleted with id: " + id);
     }
 
@@ -115,6 +117,10 @@ public class MstUserDataSource {
         return mstUserBeanObj;
     }
 
+    public int deleteAllUsers(){
+        return database.delete(MstUser.TABLE_NAME, null, null);
+    }
+
     private MstUserBean cursorToUser(Cursor cursor) {
         MstUserBean user = new MstUserBean();
         user.setId(cursor.getLong(0));
@@ -122,7 +128,7 @@ public class MstUserDataSource {
         user.setName(cursor.getString(2));
         user.setPhone(cursor.getLong(3));
         user.setEmail(cursor.getString(4));
-        user.setDatjnd(Date.valueOf(cursor.getString(5)));
+        user.setDatjnd(null!=cursor.getString(5)?Date.valueOf(cursor.getString(5)):null);
         user.setLname(cursor.getString(6));
         user.setRank(cursor.getString(7));
         user.setChecklist(cursor.getString(8));
