@@ -92,6 +92,19 @@
         <item>C</item>
     </string-array>
 
+    <string-array name="ccy">
+        <item>INR</item>
+        <item>USD</item>
+    </string-array>
+
+    <string-array name="rank">
+        <item>Bronze</item>
+        <item>Silver</item>
+        <item>Gold</item>
+        <item>Platinum</item>
+        <item>Diamond</item>
+    </string-array>
+
     <string name="pref_title_system_sync_settings">System sync settings</string>
 
     <!-- Example settings for Notifications -->
@@ -124,6 +137,8 @@
     <string name="st">*</string>
     <string name="sts_prompt">Enter status</string>
     <string name="cat_prompt">Enter category</string>
+    <string name="ccy_prompt">Select Currency</string>
+    <string name="rank_prompt">Select Rank</string>
     <string name= "adat">"Enter achieving date"</string>
     <string name= "ddl">"Enter deadline"</string>
     <string name= "amt">"Enter amount"</string>

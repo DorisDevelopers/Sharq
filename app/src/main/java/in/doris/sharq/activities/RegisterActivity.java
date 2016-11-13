@@ -7,7 +7,11 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.sql.Date;
 
@@ -18,8 +22,9 @@ import static in.doris.sharq.constants.SharqConstants.KEY_EMAIL;
 import static in.doris.sharq.constants.SharqConstants.KEY_LNAME;
 import static in.doris.sharq.constants.SharqConstants.KEY_NAME;
 
-public class RegisterActivity extends AppCompatActivity {
-    AppCompatEditText fldName, fldLname, fldIr, fldCcy, fldRank, fldEmail, fldPhone, fldJoining, fldLeader;
+public class RegisterActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+    AppCompatEditText fldName, fldLname, fldIr, fldEmail, fldPhone, fldJoining, fldLeader;
+    Spinner fldCcy, fldRank;
     String name, lName, email;
 
     @Override
@@ -27,9 +32,6 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_register);
         //Get name and email from login activity.
-        /*String name = "";
-        String lName = "";
-        String email = "";*/
         Intent intent = getIntent();
         if (null != intent) {
             name = intent.getStringExtra(KEY_NAME);
@@ -50,6 +52,14 @@ public class RegisterActivity extends AppCompatActivity {
             fldJoining = (AppCompatEditText) findViewById(R.id.joining_date);
 
             fldLeader = (AppCompatEditText) findViewById(R.id.leader_name);
+
+            fldIr =  (AppCompatEditText) findViewById(R.id.ir);
+
+            fldCcy = (Spinner) findViewById(R.id.ccy);
+            fldCcy.setOnItemSelectedListener(this);
+
+            fldRank = (Spinner) findViewById(R.id.rank);
+            fldCcy.setOnItemSelectedListener(this);
         }
         Toolbar myChildToolbar =
                 (Toolbar) findViewById(R.id.toolbar);
@@ -98,10 +108,10 @@ public class RegisterActivity extends AppCompatActivity {
             userBean.setLname(lName);
             userBean.setPhone(Long.parseLong(fldPhone.getText().toString()));
             userBean.setEmail(email);
-            userBean.setDatjnd(Date.valueOf(fldName.getText().toString()));
-            userBean.setCcy(fldCcy.getText().toString());
+            userBean.setDatjnd(Date.valueOf(fldJoining.getText().toString()));
+            userBean.setCcy(String.valueOf(fldCcy.getSelectedItem()));
             userBean.setIr(fldIr.getText().toString());
-            userBean.setRank(fldRank.getText().toString());
+            userBean.setRank(String.valueOf(fldRank.getSelectedItem()));
             userDs.open();
             userDs.createUser(userBean);
             return true;
@@ -109,6 +119,18 @@ public class RegisterActivity extends AppCompatActivity {
             e.printStackTrace();
             return false;
         }
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        Toast.makeText(parent.getContext(),
+                parent.getItemAtPosition(position).toString(),
+                Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }
 
