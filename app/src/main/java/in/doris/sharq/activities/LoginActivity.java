@@ -1,8 +1,10 @@
 package in.doris.sharq.activities;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -17,7 +19,17 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.OptionalPendingResult;
 import com.google.android.gms.common.api.ResultCallback;
 
+import java.util.ArrayList;
+
+import in.doris.sharq.db.beans.MstUserBean;
+import in.doris.sharq.constants.SharqConstants;
+import in.doris.sharq.db.datasources.MstUserDataSource;
+import in.doris.sharq.db.dbHelper.SharqDbHelper;
 import in.doris.sharq.util.GoogleAuthHelper;
+
+import static in.doris.sharq.constants.SharqConstants.KEY_EMAIL;
+import static in.doris.sharq.constants.SharqConstants.KEY_LNAME;
+import static in.doris.sharq.constants.SharqConstants.KEY_NAME;
 
 /**
  * Activity to demonstrate basic retrieval of the Google user's ID, email address, and basic
@@ -31,6 +43,8 @@ public class LoginActivity extends AppCompatActivity implements
     private TextView mStatusTextView;
     private ProgressDialog mProgressDialog;
     private GoogleAuthHelper googleAuthHelper;
+    SharqDbHelper dbHelper;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,20 +115,51 @@ public class LoginActivity extends AppCompatActivity implements
 
     // [START handleSignInResult]
     private void handleSignInResult(GoogleSignInResult result) {
+        Intent intent = null;
         Log.d(GoogleAuthHelper.TAG, "handleSignInResult:" + result.isSuccess());
 
         if (result.isSuccess()) {
             // Signed in successfully, show authenticated UI.
             GoogleSignInAccount acct = result.getSignInAccount();
             mStatusTextView.setText(getString(R.string.signed_in_fmt, acct.getDisplayName()));
-            //Actions to perform on database after successful login.
+
+            dbHelper = SharqDbHelper.getInstance(getApplicationContext());
+            //Actions to perform on database after first successful login starts.
+            switch(isNewUser(acct)){
+                case SharqConstants.NO_USER:
+                        //Pass name and email from login details.
+                        intent =new Intent(LoginActivity.this, RegisterActivity.class);
+                        intent.putExtra(KEY_NAME, acct.getGivenName());
+                        intent.putExtra(KEY_LNAME, acct.getFamilyName());
+                        intent.putExtra(KEY_EMAIL, acct.getEmail());
+                        startActivity(intent);
+                    break;
+                case SharqConstants.EXISTING_USER:
+                    intent = new Intent(LoginActivity.this,DisplayMenuActivity.class);
+                    startActivity(intent);
+                    break;
+                case SharqConstants.DIFFERENT_EMAIL:
+                    //Return Error page and ask to login with correct user.
+                    googleAuthHelper.signOut();
+                    new AlertDialog.Builder(LoginActivity.this)
+                            .setTitle("Different Email")
+                            .setMessage("Kindly Sign in with registered Email.")
+                            .setCancelable(false)
+                            .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // Whatever...
+                                }
+                            }).create().show();
+            }
+            //Actions to perform on database after first successful login Ends.
+
 
 
             //updateUI(true);
 
 
-                Intent intent1=new Intent(LoginActivity.this, RegisterActivity.class);
-                startActivity(intent1);
+
         } else {
             // Signed out, show unauthenticated UI.
             /*new AlertDialog.Builder(LoginActivity.this)
@@ -203,5 +248,33 @@ public class LoginActivity extends AppCompatActivity implements
                 revokeAccess();
                 break;
         }*/
+    }
+    private int isNewUser(GoogleSignInAccount acct){
+
+        MstUserDataSource userDs = new MstUserDataSource(getApplicationContext());
+        MstUserBean userBean = new MstUserBean();
+        try{
+            userBean.setEmail(acct.getEmail());
+            userDs.open();
+            ArrayList<MstUserBean> userlist = (ArrayList<MstUserBean>) userDs.getAllUsers();
+            if(userlist.size()==0){
+                return SharqConstants.NO_USER;
+            }else if(userlist.size()>1){
+                if(userDs.deleteAllUsers() != 0){
+                    return SharqConstants.NO_USER;
+                }else{
+                    throw new Exception();
+                }
+            }else{
+                if(userlist.get(0).getEmail().equalsIgnoreCase(acct.getEmail())){
+                    return SharqConstants.EXISTING_USER;
+                }else{
+                    return SharqConstants.DIFFERENT_EMAIL;
+                }
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            return SharqConstants.EXCEPTION;
+        }
     }
 }

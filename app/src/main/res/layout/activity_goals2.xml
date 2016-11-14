@@ -21,7 +21,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_blue_print" />
+    <include layout="@layout/content_goals" />
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -33,28 +33,42 @@
         android:paddingTop="@dimen/activity_vertical_margin"
         >
 
-        <EditText
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="72dp"
+            android:layout_alignParentTop="true"
+            android:id="@+id/goal_box">
+        <android.support.v7.widget.AppCompatEditText
             android:id="@+id/goal"
             android:hint="@string/goal_prompt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textImeMultiLine"
-            android:layout_marginTop="72dp"
-            android:layout_alignParentTop="true"
             android:layout_alignLeft="@+id/amt"
             android:layout_alignStart="@+id/amt"
             android:layout_alignRight="@+id/amt"
             android:layout_alignEnd="@+id/amt" />
-        <EditText
-            android:layout_below="@+id/goal"
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/goal_box"
+            android:id="@+id/amt_box">
+        <android.support.v7.widget.AppCompatEditText
             android:layout_margin="10dp"
             android:id="@+id/amt"
             android:hint="@string/amt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number" />
-        <EditText
-            android:layout_below="@+id/amt"
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/amt_box"
+            android:id="@+id/ddl_box">
+        <android.support.v7.widget.AppCompatEditText
             android:layout_margin="10dp"
             android:id="@+id/ddl"
             android:hint="@string/ddl"
@@ -62,8 +76,9 @@
             android:layout_height="wrap_content"
             android:focusable="false"
             android:clickable="true" />
+        </android.support.design.widget.TextInputLayout>
         <Spinner
-            android:layout_below="@+id/ddl"
+            android:layout_below="@+id/ddl_box"
             android:layout_margin="10dp"
             android:id="@+id/sts"
             android:prompt="@string/sts_prompt"
@@ -71,8 +86,12 @@
             android:layout_height="wrap_content"
             android:spinnerMode="dialog"
             android:entries="@array/status"/>
-        <EditText
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/sts"
+            android:id="@+id/adat_box">
+        <android.support.v7.widget.AppCompatEditText
             android:layout_margin="10dp"
             android:id="@+id/adat"
             android:hint="@string/adat"
@@ -81,6 +100,7 @@
             android:inputType="date"
             android:focusable="false"
             android:clickable="true"/>
+        </android.support.design.widget.TextInputLayout>
 
         <Button
             android:id="@+id/ok"
@@ -91,7 +111,7 @@
             android:clickable="true"
             android:onClick="onButtonClick"
 
-            android:layout_below="@+id/adat"
+            android:layout_below="@+id/adat_box"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="52dp" />
 

@@ -17,13 +17,28 @@
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/ir_box">
+        <android.support.v7.widget.AppCompatEditText
+            android:layout_margin="10dp"
+            android:id="@+id/ir"
+            android:hint="IR ID"
+            android:inputType="text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight= "1"/>
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ir_box"
         android:id="@+id/name_box">
         <android.support.v7.widget.AppCompatEditText
             android:layout_margin="10dp"
             android:id="@+id/name"
-            android:hint="Enter your name"
+            android:hint="Name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="phone"
             android:layout_weight= "1"/>
     </android.support.design.widget.TextInputLayout>
     <!--<android.support.v7.widget.AppCompatEditText
@@ -41,7 +56,7 @@
         <android.support.v7.widget.AppCompatEditText
             android:layout_margin="10dp"
             android:id="@+id/phone"
-            android:hint="Enter your mobile no."
+            android:hint="Mobile no."
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="phone"
@@ -55,7 +70,7 @@
         <android.support.v7.widget.AppCompatEditText
             android:layout_margin="10dp"
             android:id="@+id/email"
-            android:hint="Enter your email id"
+            android:hint="Email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
@@ -69,7 +84,7 @@
         <android.support.v7.widget.AppCompatEditText
             android:layout_margin="10dp"
             android:id="@+id/joining_date"
-            android:hint="Enter date"
+            android:hint="Joining date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="date"
@@ -83,17 +98,54 @@
         <android.support.v7.widget.AppCompatEditText
             android:layout_margin="10dp"
             android:id="@+id/leader_name"
-            android:hint="Enter leader name"
+            android:hint="Leader's name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
             android:layout_weight= "1"/>
     </android.support.design.widget.TextInputLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/leader_name_box"
+        android:id="@+id/ccy_rank_box">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Currency"
+            style="@style/InputLabel"
+            android:id="@+id/ccy_label"/>
+    <Spinner
+        android:layout_below="@+id/ccy_label"
+        android:layout_margin="10dp"
+        android:id="@+id/ccy"
+        android:prompt="@string/ccy_prompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:spinnerMode="dialog"
+        android:entries="@array/ccy"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rank"
+        style="@style/InputLabel" />
+    <Spinner
+        android:layout_toRightOf="@+id/blueprint"
+        android:layout_toEndOf="@+id/blueprint"
+        android:layout_margin="10dp"
+        android:id="@+id/rank"
+        android:prompt="@string/rank_prompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:spinnerMode="dialog"
+        android:entries="@array/rank"
+        android:layout_alignParentRight="true" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ccy_rank_box"
         android:id="@+id/button_box"
         >
 

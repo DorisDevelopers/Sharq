@@ -215,6 +215,7 @@ public class DisplayMenuActivity extends AppCompatActivity
         );
         AppIndex.AppIndexApi.end(client, viewAction);
         client.disconnect();
+
     }
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
@@ -226,7 +227,7 @@ public class DisplayMenuActivity extends AppCompatActivity
     // [START signOut]
     private void signOut() {
         boolean signedOut = false;
-        signedOut = googleAuthHelper.signOut(this);
+        signedOut = googleAuthHelper.signOut();
 
         if(signedOut){
             Intent nextActivityIntent = new Intent(this, LoginActivity.class);
