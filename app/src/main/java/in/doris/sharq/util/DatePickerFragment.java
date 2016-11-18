@@ -34,9 +34,12 @@ public class DatePickerFragment extends DialogFragment
 //        c.set(Calendar.YEAR, year);
 //        c.set(Calendar.MONTH, month);
 //        c.set(Calendar.DAY_OF_MONTH, day);
-         year= syear;
+        year= syear;
         month = smonth;
         day = sday;
+        c.set(Calendar.YEAR, year);
+        c.set(Calendar.MONTH, month);
+        c.set(Calendar.DAY_OF_MONTH, day);
 
         updateLabel();
     }
@@ -44,6 +47,9 @@ public class DatePickerFragment extends DialogFragment
                         int year,
                         int month,
                         int dayOfMonth){
+        year= year;
+        month = month;
+        day = dayOfMonth;
         c.set(Calendar.YEAR, year);
         c.set(Calendar.MONTH, month);
         c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
@@ -52,7 +58,7 @@ public class DatePickerFragment extends DialogFragment
     }
     public String updateLabel() {
 
-        String myFormat = "MM/dd/yy"; //In which you need put here
+        String myFormat = "dd/MM/yy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
         String date1;

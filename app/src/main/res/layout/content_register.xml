@@ -114,32 +114,35 @@
             android:layout_height="wrap_content"
             android:text="Currency"
             style="@style/InputLabel"
-            android:id="@+id/ccy_label"/>
-    <Spinner
-        android:layout_below="@+id/ccy_label"
-        android:layout_margin="10dp"
-        android:id="@+id/ccy"
-        android:prompt="@string/ccy_prompt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:spinnerMode="dialog"
-        android:entries="@array/ccy"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Rank"
-        style="@style/InputLabel" />
-    <Spinner
-        android:layout_toRightOf="@+id/blueprint"
-        android:layout_toEndOf="@+id/blueprint"
-        android:layout_margin="10dp"
-        android:id="@+id/rank"
-        android:prompt="@string/rank_prompt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:spinnerMode="dialog"
-        android:entries="@array/rank"
-        android:layout_alignParentRight="true" />
+            android:id="@+id/ccy_label"
+            android:layout_alignParentTop="true"
+            />
+        <Spinner
+            android:id="@+id/ccy"
+            android:prompt="@string/ccy_prompt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dialog"
+            android:entries="@array/ccy"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rank"
+            style="@style/InputLabel"
+            android:id="@+id/rank_label"
+            android:layout_alignParentTop="true"
+            />
+        <Spinner
+            android:id="@+id/rank"
+            android:prompt="@string/rank_prompt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dialog"
+            android:entries="@array/rank"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true" />
     </LinearLayout>
 
     <LinearLayout
@@ -153,12 +156,11 @@
 
             android:id="@+id/blueprint"
             android:text="Set blueprint"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight= "1"
             android:clickable="true"
             android:onClick="onBluePrint"
-
             android:layout_marginTop="10dp"
             android:layout_alignParentLeft="true"
             />
@@ -168,7 +170,7 @@
             android:layout_toEndOf="@+id/blueprint"
             android:id="@+id/goals"
             android:text="Set Goal"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight= "1"
             android:clickable="true"
