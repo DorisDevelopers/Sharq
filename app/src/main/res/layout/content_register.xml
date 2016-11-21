@@ -113,7 +113,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Currency"
-            style="@style/InputLabel"
+            style="@style/LeftInputLabel"
             android:id="@+id/ccy_label"
             android:layout_alignParentTop="true"
             />
@@ -130,7 +130,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Rank"
-            style="@style/InputLabel"
+            style="@style/RightInputLabel"
             android:id="@+id/rank_label"
             android:layout_alignParentTop="true"
             />

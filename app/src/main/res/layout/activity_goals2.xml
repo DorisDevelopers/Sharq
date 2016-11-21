@@ -34,21 +34,18 @@
         >
 
         <android.support.design.widget.TextInputLayout
+            android:layout_marginTop="72dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="72dp"
-            android:layout_alignParentTop="true"
             android:id="@+id/goal_box">
         <android.support.v7.widget.AppCompatEditText
+            android:layout_margin="10dp"
             android:id="@+id/goal"
             android:hint="@string/goal_prompt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textImeMultiLine"
-            android:layout_alignLeft="@+id/amt"
-            android:layout_alignStart="@+id/amt"
-            android:layout_alignRight="@+id/amt"
-            android:layout_alignEnd="@+id/amt" />
+            android:layout_weight= "1"/>
         </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
@@ -77,19 +74,34 @@
             android:focusable="false"
             android:clickable="true" />
         </android.support.design.widget.TextInputLayout>
-        <Spinner
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/ddl_box"
-            android:layout_margin="10dp"
+            android:layout_weight= "1"
+            android:id="@+id/sts_box">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Status"
+            style="@style/LeftInputLabel"
+            android:id="@+id/sts_label"
+            android:layout_alignParentTop="true"
+            />
+        <Spinner
             android:id="@+id/sts"
+            android:layout_width="wrap_content"
             android:prompt="@string/sts_prompt"
-            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:spinnerMode="dialog"
-            android:entries="@array/status"/>
+            android:entries="@array/status"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"/>
+        </LinearLayout>
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/sts"
+            android:layout_below="@+id/sts_box"
             android:id="@+id/adat_box">
         <android.support.v7.widget.AppCompatEditText
             android:layout_margin="10dp"

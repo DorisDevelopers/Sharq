@@ -9,5 +9,5 @@
     <dimen name="g_top_margin">100dp</dimen>
     <!-- For labels of Spinners/Dropdown -->
     <dimen name="input_label_vertical_spacing">8dp</dimen>
-    <dimen name="input_label_horizontal_spacing">4dp</dimen>
+    <dimen name="input_label_horizontal_spacing">14dp</dimen>
 </resources>
