@@ -88,7 +88,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="date"
-            android:layout_weight= "1"/>
+            android:layout_weight= "1"
+            />
     </android.support.design.widget.TextInputLayout>
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
@@ -104,18 +105,26 @@
             android:inputType="text"
             android:layout_weight= "1"/>
     </android.support.design.widget.TextInputLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/leader_name_box"
-        android:id="@+id/ccy_rank_box">
+        android:id="@+id/ccy_rank_box"
+        >
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight= "1"
+        android:id="@+id/ccy_box"
+        android:layout_alignParentLeft="true">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Currency"
-            style="@style/LeftInputLabel"
+            style="@style/InputLabel"
             android:id="@+id/ccy_label"
-            android:layout_alignParentTop="true"
+
             />
         <Spinner
             android:id="@+id/ccy"
@@ -124,15 +133,22 @@
             android:layout_height="wrap_content"
             android:spinnerMode="dialog"
             android:entries="@array/ccy"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true" />
+             />
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_toRightOf="@+id/ccy_box"
+        android:layout_toEndOf="@+id/ccy_box"
+        android:id="@+id/rank_box">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Rank"
-            style="@style/RightInputLabel"
+            style="@style/InputLabel"
             android:id="@+id/rank_label"
-            android:layout_alignParentTop="true"
+
             />
         <Spinner
             android:id="@+id/rank"
@@ -141,8 +157,8 @@
             android:layout_height="wrap_content"
             android:spinnerMode="dialog"
             android:entries="@array/rank"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true" />
+             />
+    </LinearLayout>
     </LinearLayout>
 
     <LinearLayout

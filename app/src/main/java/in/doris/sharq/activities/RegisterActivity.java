@@ -17,6 +17,7 @@ import java.sql.Date;
 
 import in.doris.sharq.db.beans.MstUserBean;
 import in.doris.sharq.db.datasources.MstUserDataSource;
+import in.doris.sharq.util.DatePickerFragment;
 
 import static in.doris.sharq.constants.SharqConstants.KEY_EMAIL;
 import static in.doris.sharq.constants.SharqConstants.KEY_LNAME;
@@ -50,6 +51,16 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
             fldPhone = (AppCompatEditText) findViewById(R.id.phone);
 
             fldJoining = (AppCompatEditText) findViewById(R.id.joining_date);
+            fldJoining.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    // TODO Auto-generated method stub
+                    DatePickerFragment picker = new DatePickerFragment();
+                    picker.setDateField(fldJoining);
+                    picker.show(getSupportFragmentManager(), "datePicker");
+                }
+            });
 
             fldLeader = (AppCompatEditText) findViewById(R.id.leader_name);
 
@@ -104,6 +115,7 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
         MstUserDataSource userDs = new MstUserDataSource(getApplicationContext());
         MstUserBean userBean = new MstUserBean();
         try{
+            Toast.makeText(getApplicationContext(), fldJoining.getText().toString(), Toast.LENGTH_LONG).show();
             userBean.setName(name);
             userBean.setLname(lName);
             userBean.setPhone(Long.parseLong(fldPhone.getText().toString()));
