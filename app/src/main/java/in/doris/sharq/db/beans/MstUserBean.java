@@ -49,7 +49,12 @@ public class MstUserBean {
 		return datjnd;
 	}
 	public void setDatjnd(Date datjnd) {
-		this.datjnd = datjnd;
+		try{
+			this.datjnd = datjnd;
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+
 	}
 	public String getLname() {
 		return lname;

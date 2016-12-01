@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import java.sql.Date;
 
+import in.doris.sharq.constants.SharqConstants;
 import in.doris.sharq.db.beans.MstUserBean;
 import in.doris.sharq.db.datasources.MstUserDataSource;
 import in.doris.sharq.util.DatePickerFragment;
@@ -120,7 +121,9 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
             userBean.setLname(lName);
             userBean.setPhone(Long.parseLong(fldPhone.getText().toString()));
             userBean.setEmail(email);
-            userBean.setDatjnd(Date.valueOf(fldJoining.getText().toString()));
+            SharqConstants.DATE_FORMAT.parse(fldJoining.getEditableText().toString());
+            Date jDate = new Date(SharqConstants.DATE_FORMAT.parse(fldJoining.getText().toString()).getTime());
+            userBean.setDatjnd(jDate);
             userBean.setCcy(String.valueOf(fldCcy.getSelectedItem()));
             userBean.setIr(fldIr.getText().toString());
             userBean.setRank(String.valueOf(fldRank.getSelectedItem()));

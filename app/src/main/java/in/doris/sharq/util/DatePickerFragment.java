@@ -13,6 +13,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
+import in.doris.sharq.constants.SharqConstants;
+
 /**
  * Created by ridharm on 26-10-2016.
  */
@@ -52,10 +54,10 @@ public class DatePickerFragment extends DialogFragment
 
     public String updateLabel() {
 
-        String myFormat = "dd/MM/yy"; //In which you need put here
-        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+        //String myFormat = "dd/MM/yy"; //In which you need put here
+        //SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
         String date1;
-        date1 = sdf.format(c.getTime());
+        date1 = SharqConstants.DATE_FORMAT.format(c.getTime());
         dateField.setText(date1);
         return date1;
     }

@@ -1,5 +1,8 @@
 package in.doris.sharq.constants;
 
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+
 /**
  * Created by Nishu on 10-11-2016.
  */
@@ -16,6 +19,7 @@ public class SharqConstants {
     public static final String KEY_EMAIL = "login_email";
     public static final String CCY_INR = "INR";
     public static final String CCY_USD = "USD";
+    public static SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd/MM/yyyy", Locale.US);
 
 
     public static final String ERR_USR_EXISTS_DESC = "User with different Email address already exists";
