@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +20,7 @@ import in.doris.sharq.db.datasources.NamelistDataSource;
 import in.doris.sharq.db.dbHelper.SharqDbHelper;
 
 public class ManipulateNamelistActivity extends AppCompatActivity {
-    EditText name, phone, place, cat,  sts;
+    AppCompatEditText name, phone, place, cat,  sts;
     RatingBar ratingBar;
     Button next;
     SharqDbHelper dbHelper;
@@ -46,12 +47,12 @@ public class ManipulateNamelistActivity extends AppCompatActivity {
 
         next = (Button) findViewById(R.id.ok);
 //        id = (EditText) findViewById(R.id._id);
-        name = (EditText) findViewById(R.id.name);
-        phone = (EditText) findViewById(R.id.phone);
-        place = (EditText) findViewById(R.id.place);
+        name = (AppCompatEditText) findViewById(R.id.name);
+        phone = (AppCompatEditText) findViewById(R.id.phone);
+        place = (AppCompatEditText) findViewById(R.id.place);
 //        remark = (EditText) findViewById(R.id.remark);
-        cat = (EditText) findViewById(R.id.cat);
-        sts = (EditText) findViewById(R.id.sts);
+        cat = (AppCompatEditText) findViewById(R.id.cat);
+        sts = (AppCompatEditText) findViewById(R.id.sts);
         ratingBar = (RatingBar) findViewById(R.id.ratingBar);
 
     }

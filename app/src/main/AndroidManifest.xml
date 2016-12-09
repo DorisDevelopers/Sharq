@@ -34,7 +34,7 @@
                 android:value="in.doris.sharq.activities.LoginActivity" />
         </activity>
         <activity
-            android:name=".GoalsActivity"
+            android:name=".AddGoalsActivity"
             android:label="@string/title_activity_goals"
             android:parentActivityName=".RegisterActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -53,11 +53,11 @@
         <activity
             android:name=".BluePrintActivity"
             android:label="@string/title_activity_blue_print"
-            android:parentActivityName=".RegisterActivity"
+            android:parentActivityName=".AddGoalsActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="in.doris.sharq.activities.RegisterActivity" />
+                android:value="in.doris.sharq.activities.AddGoalsActivity" />
         </activity>
         <activity
             android:name=".RegisterActivity"
@@ -94,6 +94,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="in.doris.sharq.activities.NameListActivity" />
         </activity>
+        <activity android:name=".ViewGoalsActivity"></activity>
     </application>
 
 </manifest>

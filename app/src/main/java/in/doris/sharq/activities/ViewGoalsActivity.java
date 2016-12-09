@@ -6,17 +6,14 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteException;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -33,45 +30,39 @@ import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.util.ArrayList;
 
-import in.doris.sharq.activities.R;
-import in.doris.sharq.db.beans.NamelistBean;
-import in.doris.sharq.db.datasources.NamelistDataSource;
+import in.doris.sharq.db.beans.GoalBean;
+import in.doris.sharq.db.datasources.GoalDataSource;
 import in.doris.sharq.db.dbHelper.SharqDbHelper;
 
-public class NameListActivity extends AppCompatActivity
+public class ViewGoalsActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
     private GoogleApiClient client;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.full_name_list);
+        setContentView(R.layout.activity_view_goals);
         Intent intent = getIntent();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-       /* DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();*/
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+        navigationView.setNavigationItemSelectedListener(this);
+        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
 
         SharqDbHelper db = SharqDbHelper.getInstance(getApplicationContext());
         android.widget.LinearLayout parentLayout;
-        displayallNames();
+        displayallGoals();
     }
 
-    private void displayallNames(){
-        NamelistDataSource namelistDS = new NamelistDataSource(getApplicationContext());
-        ArrayList<NamelistBean> namelists = new ArrayList<>();
-        final View view = LayoutInflater.from(this).inflate(R.layout.full_name_list, null);
+    private void displayallGoals(){
+        GoalDataSource goalDS = new GoalDataSource(getApplicationContext());
+        ArrayList<GoalBean> goals = new ArrayList<>();
+        final View view = LayoutInflater.from(this).inflate(R.layout.full_goal_list, null);
         TableLayout tableLayout=(TableLayout)findViewById(R.id.tablelayout);
         TableRow rowHeader = new TableRow(getApplicationContext());
         new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT,
                 TableLayout.LayoutParams.WRAP_CONTENT);
-        String[] headerText={"S.No.","Name", "Location", "Cat", "Contact"};
+        String[] headerText={"S.No.","Goal", "Amount", "Deadline", "Status", "Hit on"};
         for(String c:headerText) {
             TextView tv = new TextView(this);
             tv.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,
@@ -85,17 +76,19 @@ public class NameListActivity extends AppCompatActivity
         tableLayout.addView(rowHeader);
         try
         {
-            namelistDS.open();
-            namelists = (ArrayList<NamelistBean>) namelistDS.getAllNamelists();
-            if(namelists.size() >0)
+            goalDS.open();
+            goals = (ArrayList<GoalBean>) goalDS.getAllGoals();
+
+            if(goals.size() >0)
             {
-                for (NamelistBean namelstObj:namelists) {
+                for (GoalBean goalObj:goals) {
                     // Read columns data
-                    final Long id= namelstObj.getId();
-                    final String name= namelstObj.getName();
-                    final String loc= namelstObj.getPlace();
-                    String cat= namelstObj.getCat();
-                    String phone= String.valueOf(namelstObj.getPhone());
+                    final Long id= goalObj.getId();
+                    final String goal= goalObj.getGoal();
+                    final String amt= goalObj.getAmt().toString();
+                    String ddl= goalObj.getDdl().toString();
+                    String sts= goalObj.getSts();
+                    String adat= goalObj.getAdat().toString();
 
                     // dara rows
                     TableRow row = new TableRow(getApplicationContext());
@@ -103,7 +96,7 @@ public class NameListActivity extends AppCompatActivity
                         @Override
                         public void onClick(View v) {
                             //Do Stuff
-                            final Dialog dialog = new Dialog(NameListActivity.this);
+                            final Dialog dialog = new Dialog(ViewGoalsActivity.this);
                             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                             dialog.setContentView(R.layout.dialog);
                             dialog.setTitle(R.string.star);
@@ -113,12 +106,13 @@ public class NameListActivity extends AppCompatActivity
                             yes.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-                                    NamelistBean nb = new NamelistBean();
+                                   /* NamelistBean nb = new NamelistBean();
                                     nb.setStar(String.valueOf(star.getRating()));
                                     nb.setId(id);
                                     NamelistDataSource nds = new NamelistDataSource(getApplicationContext());
-                                    nds.updateNamelistAlternate(nb);
-                                    Toast.makeText(getApplicationContext(), "Star is given.", Toast.LENGTH_SHORT).show();
+                                    nds.updateNamelistAlternate(nb);*/
+                                    //TODO: action on touching goal
+                                    Toast.makeText(getApplicationContext(), "provide action to edit goal", Toast.LENGTH_SHORT).show();
                                     dialog.dismiss();
 
                                 }
@@ -143,7 +137,9 @@ public class NameListActivity extends AppCompatActivity
                     row.setOnLongClickListener(new View.OnLongClickListener() {
                         @Override
                         public boolean onLongClick(View v) {
-                            AlertDialog.Builder builder = new AlertDialog.Builder(NameListActivity.this);
+
+                            //TODO: add code for long press
+                           /* AlertDialog.Builder builder = new AlertDialog.Builder(ViewGoalsActivity.this);
                             builder.setMessage(R.string.follow)
                                     .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int id) {
@@ -158,13 +154,13 @@ public class NameListActivity extends AppCompatActivity
                                         }
                                     });
                             // Create the AlertDialog object and return it
-                            builder.create();
+                            builder.create();*/
                             return true;
                         }
                     });
                     row.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT,
                             TableLayout.LayoutParams.WRAP_CONTENT));
-                    String[] colText={id+"",name+" ",loc, cat, phone};
+                    String[] colText={id.toString(),goal,amt, ddl, sts, adat};
                     for(String text:colText) {
                         TextView tv = new TextView(this);
                         tv.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,
@@ -189,55 +185,16 @@ public class NameListActivity extends AppCompatActivity
         }
         finally
         {
-            namelistDS.close();
+            goalDS.close();
             //dbhelper.endTransaction();
             // End the transaction.
             //dbhelper.close();
             // Close database
         }
     }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.activity_name_list, menu);
-        return true;
-    }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-//        add new record
-        if (id == R.id.add) {
-            Intent intent = new Intent(this, ManipulateNamelistActivity.class);
-            startActivity(intent);
-        }
 
-        return super.onOptionsItemSelected(item);
-    }
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-        if (id == R.id.name_list) {
-            Intent intent = new Intent(this, NameListActivity.class);
-            startActivity(intent);
-        }
-        else if (id == R.id.follow_up_list) {
-            Intent intent = new Intent(this, FollowupActivity.class);
-            startActivity(intent);
-        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        return false;
     }
 }

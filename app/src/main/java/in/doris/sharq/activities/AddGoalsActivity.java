@@ -1,6 +1,5 @@
 package in.doris.sharq.activities;
 
-import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,23 +8,18 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.sql.Date;
-import java.util.Locale;
 
-import in.doris.sharq.activities.R;
 import in.doris.sharq.db.beans.GoalBean;
 import in.doris.sharq.db.datasources.GoalDataSource;
 import in.doris.sharq.db.dbHelper.SharqDbHelper;
 import in.doris.sharq.util.DatePickerFragment;
 
-public class GoalsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class AddGoalsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     AppCompatEditText id, goal, amt, ddl, adat;
     Spinner sts;
     Button next;
@@ -38,7 +32,7 @@ public class GoalsActivity extends AppCompatActivity implements AdapterView.OnIt
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_goals2);
+        setContentView(R.layout.activity_goals);
         Intent intent = getIntent();
         getAllWidgets();
         dbHelper = SharqDbHelper.getInstance(getApplicationContext());
@@ -88,7 +82,7 @@ adat.setText(sdf.format(myCalendar.getTime()));
 next.setOnClickListener(new View.OnClickListener() {
 @Override
 public void onClick(View v) {
-setContentView(R.layout.activity_goals2);
+setContentView(R.layout.activity_goals);
 GoalBean goal= new GoalBean();
 
 */
@@ -112,7 +106,7 @@ GoalBean goal= new GoalBean();
 
     }
 
-    public void onButtonClick(View view) {
+    public void onButtonClick(View v) {
         if ( goal.getText().toString().equals("") || amt.getText().toString().equals("")
                 || ddl.getText().toString().equals("") || sts.getSelectedItem().toString().equals("") || adat.getText().toString().equals(""))
        {
@@ -134,21 +128,23 @@ GoalBean goal= new GoalBean();
             GoalDataSource gds = new GoalDataSource(getApplicationContext());
             gds.createGoal(gb);
             Toast.makeText(this, "Goal is set. ", Toast.LENGTH_LONG).show();
+            viewAddGoals(v);
 
       }
-        finish();
+        //finish();
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        /*Toast.makeText(parent.getContext(),
-                parent.getItemAtPosition(position).toString(),
-                Toast.LENGTH_SHORT).show();*/
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
+    }
 
+    public void viewAddGoals(View v){
+        Intent intent = new Intent(this, ViewGoalsActivity.class);
+        startActivity(intent);
     }
 
 }

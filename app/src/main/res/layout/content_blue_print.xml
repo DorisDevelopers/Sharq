@@ -12,4 +12,73 @@
     tools:context="in.doris.sharq.activities.BluePrintActivity"
     tools:showIn="@layout/activity_blue_print">
 
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:layout_alignParentTop="true"
+        android:id="@+id/blueprint_box">
+        <android.support.v7.widget.AppCompatEditText
+            android:layout_margin="10dp"
+            android:id="@+id/blueprint"
+            android:hint="Blueprint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight= "1" />
+    </android.support.design.widget.TextInputLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/blueprint_box"
+        android:layout_weight= "1"
+        android:id="@+id/sts_box">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Status"
+            style="@style/InputLabel"
+            android:id="@+id/sts_label"
+            android:layout_alignParentTop="true"
+            />
+        <Spinner
+            android:id="@+id/sts"
+            android:layout_width="wrap_content"
+            android:prompt="@string/sts_prompt"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dialog"
+            android:entries="@array/status"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"/>
+    </LinearLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sts_box"
+        android:id="@+id/adat_box">
+        <android.support.v7.widget.AppCompatEditText
+            android:layout_margin="10dp"
+            android:id="@+id/adat"
+            android:hint="Achieved date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="date"
+            android:layout_weight= "1"
+            android:focusable="false"
+            android:clickable="true"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/ok"
+        android:text="Ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight= "0"
+        android:layout_gravity="bottom"
+        android:clickable="true"
+        android:onClick="onButtonClick"
+
+        android:layout_below="@id/adat_box"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="64dp" />
+
 </RelativeLayout>

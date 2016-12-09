@@ -7,7 +7,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
@@ -35,6 +34,8 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
         setContentView(R.layout.content_register);
         //Get name and email from login activity.
         Intent intent = getIntent();
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         if (null != intent) {
             name = intent.getStringExtra(KEY_NAME);
             lName = intent.getStringExtra(KEY_LNAME);
@@ -73,19 +74,26 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
             fldRank = (Spinner) findViewById(R.id.rank);
             fldCcy.setOnItemSelectedListener(this);
         }
-        Toolbar myChildToolbar =
+        /*Toolbar myChildToolbar =
                 (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(myChildToolbar);
+        setSupportActionBar(myChildToolbar);*/
 
     }
-    public void onGoal(View v){
-        Intent intent = new Intent(RegisterActivity.this, GoalsActivity.class);
+    public void startGoal(View v){
+        Intent intent = new Intent(RegisterActivity.this, AddGoalsActivity.class);
         startActivity(intent);
     }
     public void onBluePrint(View v){
         Intent intent = new Intent(RegisterActivity.this, BluePrintActivity.class);
         startActivity(intent);
     }
+
+    public void startDisplayMenu(View v){
+        Intent intent = new Intent(this, DisplayMenuActivity.class);
+        startActivity(intent);
+    }
+
+
     public void onSubmit(View v){
         if(null == fldName || null == fldPhone || null == fldEmail || null == fldJoining || null == fldLeader
                 || "".equals(fldName.getText().toString()) || "".equals(fldPhone.getText().toString())
@@ -105,8 +113,8 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
             if(!createUser()){
                 //Action to perform when user creation fails, preferably return to same page and try again.
             }else {
-                Intent intent = new Intent(this, DisplayMenuActivity.class);
-                startActivity(intent);
+                startGoal(v);
+                //startDisplayMenu(v);
             }
         }
 

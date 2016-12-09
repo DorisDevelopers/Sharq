@@ -9,6 +9,8 @@ public class GoalBean {
     private Date ddl = null;//Deadline Date.
     private String sts;//Status.
     private Date adat= null;//Achieved Date.
+
+
 	public Long getId() {
 		return id;
 	}

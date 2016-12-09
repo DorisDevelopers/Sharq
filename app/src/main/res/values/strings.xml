@@ -139,10 +139,10 @@
     <string name="cat_prompt">Enter category</string>
     <string name="ccy_prompt">Select Currency</string>
     <string name="rank_prompt">Select Rank</string>
-    <string name= "adat">"Enter achieving date"</string>
-    <string name= "ddl">"Enter deadline"</string>
-    <string name= "amt">"Enter amount"</string>
-    <string name= "goal_prompt">"Enter your goal"</string>
+    <string name="adat">"Enter achieving date"</string>
+    <string name="ddl">"Enter deadline"</string>
+    <string name="amt">"Enter amount"</string>
+    <string name="goal_prompt">"Enter your goal"</string>
     <!-- Content Description for images -->
     <string name="desc_google_icon">Google Logo</string>
 
